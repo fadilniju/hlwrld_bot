@@ -1,12 +1,23 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-
-
-updater = Updater(token='679306216:AAHuQD0_velGKfcN11E4_6eqItvg4zDCNtc') 
-dispatcher = updater.dispatcher
-
+import os
 import logging
+
+#Логирование
 logging.basicConfig(format='%(asctime)s - %(name)s-%(levelname)s-%(messages)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+#объявляем бота
+PORT = int(os.environ.get('PORT', '8443'))
+TOKEN = "679306216:AAHuQD0_velGKfcN11E4_6eqItvg4zDCNtc"
+updater = Updater(TOKEN)
+dispatcher = updater.dispatcher
+
+updater.start_webhook(listen="0.0.0.0",
+                      port=PORT,
+                      url_path=TOKEN)
+updater.bot.set_webhook("https://hlwrld-bot.herokuapp.com/" + TOKEN)
+
+
 
 def startCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text='Привет! Йо-хо-хо!')
