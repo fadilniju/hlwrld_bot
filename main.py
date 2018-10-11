@@ -6,15 +6,17 @@ dispatcher = updater.dispatcher
 
 import logging
 logging.basicConfig(format='%(asctime)s - %(name)s-%(levelname)s-%(messages)s', level=logging.INFO)
+
+
 def startCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text='Привет! Йо-хо-хо!')
 def textMessage(bot,update):
     response = 'Твое сообщение: ' + update.message.text
-    bot.send_message(chat_id=udate.message.chat_id, text = response)
+    bot.send_message(chat_id=update.message.chat_id, text = response)
 
 
-start_commnd_handler = CommandHandler('start', startCommand)
-text_message_handler = MessageHandler(Filters.text)
+start_command_handler = CommandHandler('start', startCommand)
+text_message_handler = MessageHandler(Filters.text, textMessage)
 
 
 dispatcher.add_handler(start_command_handler)
