@@ -1,6 +1,7 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
 import logging
+import telegram
 
 #Логирование
 logging.basicConfig(format='%(asctime)s - %(name)s-%(levelname)s-%(messages)s', level=logging.INFO)
@@ -26,6 +27,11 @@ def textMessage(bot,update):
     bot.send_message(chat_id=update.message.chat_id, text = response)
 def sticker(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text = 'Не шли мне стикеры, плз(((')
+
+custom_keyboard = [['top-left', 'top-right'],
+                       ['bottom-left', 'bottom-right']]
+reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
+
 
 
 start_command_handler = CommandHandler('start', startCommand)
