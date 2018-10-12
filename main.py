@@ -30,8 +30,8 @@ def sticker(bot, update):
     
     
 
-custom_keyboard = [['top-left', 'top-right'],
-                       ['bottom-left', 'bottom-right']]
+custom_keyboard = [[telegram.KeyboardButton("Option 1")],
+                       [telegram.KeyboardButton("Option 2")]]
 reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
 def get_menu(bot, update):
     bot.send_message(chat_id=update.message.chat_id, 
