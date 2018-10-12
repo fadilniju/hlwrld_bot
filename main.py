@@ -34,7 +34,7 @@ custom_keyboard = [['top-left', 'top-right'],
                        ['bottom-left', 'bottom-right']]
 reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
 def get_menu(bot, update):
-    bot.send_message(chat_id=update.message.chat_id,chat_id=chat_id, 
+    bot.send_message(chat_id=update.message.chat_id, 
                   text="Custom Keyboard Test", 
                   reply_markup=reply_markup)
 
