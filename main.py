@@ -14,7 +14,7 @@ WEBHOOK_PORT = int(os.environ.get('PORT', '8443'))
 WEBHOOK_LISTEN = '0.0.0.0'
 
 WEBHOOK_URL_BASE = "https://{}:{}".format(WEBHOOK_HOST, WEBHOOK_PORT)
-WEBHOOK_URL_PATH = "/{}/".format(API_TOKEN)
+WEBHOOK_URL_PATH = "/{}/".format(TOKEN)
 
 #Логирование
 logger = telebot.logger
