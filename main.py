@@ -9,7 +9,7 @@ import telebot
 
 TOKEN = os.environ.get('BOT_TOKEN')
 
-WEBHOOK_HOST = "https://hlwrld-bot.herokuapp.com/"
+WEBHOOK_HOST = "hlwrld-bot.herokuapp.com"
 WEBHOOK_PORT = int(os.environ.get('PORT', '8443'))
 WEBHOOK_LISTEN = '0.0.0.0'
 
