@@ -58,6 +58,8 @@ def echo_message(message):
 bot.remove_webhook()
 
 # Set webhook
+print(WEBHOOK_URL_BASE)
+print(WEBHOOK_URL_PATH)
 bot.set_webhook(url=WEBHOOK_URL_BASE+WEBHOOK_URL_PATH)
 
 
