@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 #объявляем бота
 PORT = int(os.environ.get('PORT', '8443'))
-TOKEN = "679306216:AAHuQD0_velGKfcN11E4_6eqItvg4zDCNtc"
+TOKEN = ""
 updater = Updater(TOKEN)
 dispatcher = updater.dispatcher
 
