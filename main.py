@@ -10,7 +10,7 @@ import telebot
 TOKEN = os.environ.get('BOT_TOKEN')
 
 WEBHOOK_HOST = "hlwrld-bot.herokuapp.com"
-WEBHOOK_PORT = int(os.environ.get('PORT', '8443'))
+WEBHOOK_PORT = int(os.environ.get('PORT', '8'))
 WEBHOOK_LISTEN = '0.0.0.0'
 
 WEBHOOK_URL_BASE = "https://{}:{}".format(WEBHOOK_HOST, WEBHOOK_PORT)
@@ -60,7 +60,7 @@ bot.remove_webhook()
 # Set webhook
 print(WEBHOOK_URL_BASE)
 print(WEBHOOK_URL_PATH)
-bot.set_webhook(url=WEBHOOK_URL_BASE+WEBHOOK_URL_PATH)
+bot.set_webhook(url="https://hlwrld-bot.herokuapp.com"+WEBHOOK_URL_PATH)
 
 
 # Start aiohttp server
