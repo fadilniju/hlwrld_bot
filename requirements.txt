@@ -1,10 +1,14 @@
+aiohttp==2.3.10
 asn1crypto==0.24.0
+async-timeout==2.0.1
 certifi==2018.10.15
 chardet==3.0.4
 cffi==1.11.5
 cryptography==2.3.1
 future==0.16.0
 idna==2.7
+idna-ssl==1.1.0
+multidict==4.4.2
 pipenv==2018.10.9
 pycparser==2.19
 pyTelegramBotAPI==3.6.6
@@ -14,3 +18,4 @@ six==1.11.0
 urllib3==1.23
 virtualenv==16.0.0
 virtualenv-clone==0.3.0
+yarl==1.2.0
