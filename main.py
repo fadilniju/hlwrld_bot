@@ -1,7 +1,6 @@
 
-import os
+
 import logging
-import ssl
 import config
 
 from aiohttp import web
