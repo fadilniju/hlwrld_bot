@@ -9,6 +9,7 @@ import telebot
 
 
 #Логирование
+
 logger = telebot.logger
 telebot.logger.setLevel(logging.INFO)
 
@@ -16,6 +17,7 @@ telebot.logger.setLevel(logging.INFO)
 bot = telebot.TeleBot(config.TOKEN)
 
 # Вызываем объект App для инициализации http сервера
+
 app = web.Application()
 
 """
@@ -60,7 +62,7 @@ bot.set_webhook(url=config.WEBHOOK_URL_BASE+config.WEBHOOK_URL_PATH)
 web.run_app(
     app,
     host=config.WEBHOOK_LISTEN,
-    port=config.WEBHOOK_PORT,
+    port=config.WEBHOOK_PORT
 )    
     
 """
