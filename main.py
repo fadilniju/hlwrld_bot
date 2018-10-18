@@ -16,6 +16,7 @@ telebot.logger.setLevel(logging.INFO)
 # Бот
 bot = telebot.TeleBot(config.TOKEN)
 
+# Вызываем объект App для инициализации http сервера
 app = web.Application()
 
 """
