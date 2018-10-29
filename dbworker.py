@@ -15,6 +15,7 @@ def get_curr_state(user_id):
         return config.States.S_START.value
 
 
+
 def set_curr_state(user_id, value):
     users_coll = db_con['user_states']
     try:
@@ -23,3 +24,4 @@ def set_curr_state(user_id, value):
     except:
         print('An error occured while trying post to db')
         return False
+
