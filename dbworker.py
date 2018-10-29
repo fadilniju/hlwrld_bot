@@ -3,8 +3,9 @@ from pymongo import MongoClient
 
 client = MongoClient(config.DB_URL)
 
-db_name = config.DB_URL
-db_name = db_name.split('/')[-1]
+db = config.DB_URL
+print(db_name)
+db = db.split('/')[-1]
 db_con = client[db_name]
 
 
