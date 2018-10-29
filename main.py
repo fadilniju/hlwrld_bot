@@ -76,7 +76,7 @@ def user_entering_age(message):
         dbworker.set_curr_state(message.chat.id, config.States.S_ENTER_PIC.value)   
 
 @bot.message_handler(content_types=["photo"],
-                     func=lambda message: dbworker.get_curr_state(message.chat.id) == config.States.S_SEND_PIC.value)
+                     func=lambda message: dbworker.get_curr_state(message.chat.id) == config.States.S_ENTER_PIC.value)
 def user_sending_photo(message):
     # То, что это фотография, мы уже проверили в хэндлере, никаких дополнительных действий не нужно.
     bot.send_message(message.chat.id, "Отлично! Больше от тебя ничего не требуется. Если захочешь пообщаться снова - "
