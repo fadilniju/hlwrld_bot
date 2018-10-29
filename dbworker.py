@@ -3,11 +3,8 @@ import config
 
 client = MongoClient(config.DB_URL)
 
-db = config.DB_URL
-print (db)
-"""
-db = db.split('/')[-1]
-db_con = client[db]
+db_uri = config.DB_URL.split('/')[-1]
+db_con = client[db_uri]
 
 
 def get_curr_state(user_id):
@@ -26,4 +23,3 @@ def set_curr_state(user_id, value):
         except:
             print('An error occured while trying post to db')
             return False
-"""
