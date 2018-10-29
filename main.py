@@ -44,7 +44,7 @@ def send_welcome(message):
                  ("Привет, я EchoBot.\n"
                   "Я здесь чтобы пересылать твои сообщения.\n"
                   "Как тебя зовут?"))
-    dbworker.set_curr_state(message.chat.id, config.States.S_ENTER_NAME)
+    dbworker.set_curr_state(message.chat.id, config.States.S_ENTER_NAME.value)
     
 @bot.message_handler(commands=["reset"])
 def cmd_reset(message):
