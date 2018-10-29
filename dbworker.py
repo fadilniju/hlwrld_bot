@@ -1,10 +1,9 @@
-import config
 from pymongo import MongoClient
+import config
 
 client = MongoClient(config.DB_URL)
 
 db = config.DB_URL
-print(db)
 db = db.split('/')[-1]
 db_con = client[db]
 
