@@ -4,9 +4,9 @@ from pymongo import MongoClient
 client = MongoClient(config.DB_URL)
 
 db = config.DB_URL
-print(db_name)
+print(db)
 db = db.split('/')[-1]
-db_con = client[db_name]
+db_con = client[db]
 
 
 def get_curr_state(user_id):
