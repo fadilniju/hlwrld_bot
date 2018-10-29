@@ -49,16 +49,16 @@ def send_welcome(message):
 @bot.message_handler(commands=["reset"])
 def cmd_reset(message):
     bot.send_message(message.chat.id, "Что ж, начнём по-новой. Как тебя зовут?")
-    dbworker.set_state(message.chat.id, config.States.S_ENTER_NAME.value)
+    dbworker.set_curr_state(message.chat.id, config.States.S_ENTER_NAME.value)
 
 
-@bot.message_handler(func=lambda message: dbworker.get_current_state(message.chat.id) == config.States.S_ENTER_NAME.value)
+@bot.message_handler(func=lambda message: dbworker.get_curr_state(message.chat.id) == config.States.S_ENTER_NAME.value)
 def user_entering_name(message):
     # В случае с именем не будем ничего проверять, пусть хоть "25671", хоть Евкакий
     bot.send_message(message.chat.id, "Отличное имя, запомню! Теперь укажи, пожалуйста, свой возраст.")
-    dbworker.set_state(message.chat.id, config.States.S_ENTER_AGE.value)
+    dbworker.set_curr_state(message.chat.id, config.States.S_ENTER_AGE.value)
     
-@bot.message_handler(func=lambda message: dbworker.get_current_state(message.chat.id) == config.States.S_ENTER_AGE.value)
+@bot.message_handler(func=lambda message: dbworker.get_curr_state(message.chat.id) == config.States.S_ENTER_AGE.value)
 def user_entering_age(message):
     # А вот тут сделаем проверку
     if not message.text.isdigit():
@@ -73,15 +73,15 @@ def user_entering_age(message):
         # Возраст введён корректно, можно идти дальше
         bot.send_message(message.chat.id, "Когда-то и мне было столько лет...эх... Впрочем, не будем отвлекаться. "
                                           "Отправь мне какую-нибудь фотографию.")
-        dbworker.set_state(message.chat.id, config.States.S_SEND_PIC.value)   
+        dbworker.set_curr_state(message.chat.id, config.States.S_SEND_PIC.value)   
 
 @bot.message_handler(content_types=["photo"],
-                     func=lambda message: dbworker.get_current_state(message.chat.id) == config.States.S_SEND_PIC.value)
+                     func=lambda message: dbworker.get_curr_state(message.chat.id) == config.States.S_SEND_PIC.value)
 def user_sending_photo(message):
     # То, что это фотография, мы уже проверили в хэндлере, никаких дополнительных действий не нужно.
     bot.send_message(message.chat.id, "Отлично! Больше от тебя ничего не требуется. Если захочешь пообщаться снова - "
                      "отправь команду /start.")
-    dbworker.set_state(message.chat.id, config.States.S_START.value)
+    dbworker.set_curr_state(message.chat.id, config.States.S_START.value)
     
 
 """
