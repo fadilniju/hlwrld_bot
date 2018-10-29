@@ -8,7 +8,7 @@ db_con = client[db_uri]
 
 
 def get_curr_state(user_id):
-    with db_con['user_states'] as users_coll:
+    users_coll = db_con['user_states']
         try:
             return users_coll.find_one({"_id": user_id})['state']
         except KeyError:
@@ -16,7 +16,7 @@ def get_curr_state(user_id):
 
 
 def set_curr_state(user_id, value):
-    with db_con['user_states'] as users_coll:
+    users_coll = db_con['user_states']
         try:
             users_coll.insert_one({"_id": user_id, "state": value})
             return True
