@@ -73,7 +73,7 @@ def user_entering_age(message):
         # Возраст введён корректно, можно идти дальше
         bot.send_message(message.chat.id, "Когда-то и мне было столько лет...эх... Впрочем, не будем отвлекаться. "
                                           "Отправь мне какую-нибудь фотографию.")
-        dbworker.set_curr_state(message.chat.id, config.States.S_SEND_PIC.value)   
+        dbworker.set_curr_state(message.chat.id, config.States.S_ENTER_PIC.value)   
 
 @bot.message_handler(content_types=["photo"],
                      func=lambda message: dbworker.get_curr_state(message.chat.id) == config.States.S_SEND_PIC.value)
