@@ -3,8 +3,9 @@ import config
 
 client = MongoClient(config.DB_URL)
 
-db_uri = config.DB_URL.split('/')[-1]
-db_con = client[db_uri]
+db_name = config.DB_URL.split('/')[-1]
+print(db_name)
+db_con = client[db_name]
 
 
 def get_curr_state(user_id):
