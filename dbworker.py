@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 client = MongoClient(config.DB_URL)
 
-db_name = config.DB_URL.split(''\')[-1]
+db_name = config.DB_URL.split('/')[-1]
 db_con = client[db_name]
 
 
@@ -20,8 +20,3 @@ def set_curr_state(user_id, value):
         try:
             users_coll.insert_one({"_id": user_id, "state": value})
             return True
-
-
-
-
-
