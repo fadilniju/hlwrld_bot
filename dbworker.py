@@ -18,9 +18,5 @@ def get_curr_state(user_id):
 
 def set_curr_state(user_id, value):
     users_coll = db_con['user_states']
-    try:
-        users_coll.save({"_id": user_id, "state": value})
-        return True
-    except BaseException:
-        print('An error occured while trying post to db')
-        return False
+    users_coll.save({"_id": user_id, "state": value})
+    
