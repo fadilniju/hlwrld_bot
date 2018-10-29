@@ -12,8 +12,8 @@ WEBHOOK_URL_PATH = "/{}/".format(TOKEN)
 
 DB_URL = os.environ.get('DATABASE_URL')
 
-class States(Enum):
 
+class States(Enum):
     S_START = "0"
     S_ENTER_NAME = "1"
     S_ENTER_AGE = "2"
