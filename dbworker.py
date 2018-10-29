@@ -20,3 +20,6 @@ def set_curr_state(user_id, value):
         try:
             users_coll.insert_one({"_id": user_id, "state": value})
             return True
+        except:
+            print('An error occured while trying post to db')
+            return False
