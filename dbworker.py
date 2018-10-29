@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 import config
+import sys
 
 client = MongoClient(config.DB_URL)
 
@@ -12,11 +13,10 @@ def get_curr_state(user_id):
     users_coll = db_con['user_states']
     try:
         return users_coll.find_one({"_id": user_id})['state']
-    except BaseException:
+    except Exception:
         return config.States.S_START.value
 
 
 def set_curr_state(user_id, value):
     users_coll = db_con['user_states']
     users_coll.save({"_id": user_id, "state": value})
-    
