@@ -10,7 +10,7 @@ WEBHOOK_LISTEN = '0.0.0.0'
 WEBHOOK_URL_BASE = "https://{}".format(WEBHOOK_HOST)
 WEBHOOK_URL_PATH = "/{}/".format(TOKEN)
 
-DB_URL = os.environ.get('DATABASE_URL')
+DB_URL = os.environ.get('MONGODB_URI')
 
 
 class States(Enum):
