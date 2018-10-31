@@ -40,11 +40,19 @@ app.router.add_post('/{token}/', handle)
 # Обрабатываем '/start' and '/help'
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message,
-                 ("Привет, я EchoBot.\n"
-                  "Я здесь чтобы пересылать твои сообщения.\n"
-                  "Как тебя зовут?"))
-    dbworker.set_curr_state(message.chat.id, config.States.S_ENTER_NAME.value)
+    state = dbworker.get_curr_state(message.chat.id)
+    if state == config.States.S_ENTER_NAME.value:
+        bot.send_message(message.chat.id, "Кажется, кто-то обещал отправить своё имя, но так и не сделал этого :( Жду...")
+    elif state == config.States.S_ENTER_AGE.value:
+        bot.send_message(message.chat.id, "Кажется, кто-то обещал отправить свой возраст, но так и не сделал этого :( Жду...")
+    elif state == config.States.S_ENTER_PIC.value:
+        bot.send_message(message.chat.id, "Кажется, кто-то обещал отправить своё фото, но так и не сделал этого :( Жду...")
+    else:
+        bot.reply_to(message,
+            ("Привет, я EchoBot.\n"
+            "Я здесь чтобы пересылать твои сообщения.\n"
+            "Как тебя зовут?"))
+        dbworker.set_curr_state(message.chat.id, config.States.S_ENTER_NAME.value)
     
 @bot.message_handler(commands=["reset"])
 def cmd_reset(message):
@@ -57,6 +65,7 @@ def user_entering_name(message):
     # В случае с именем не будем ничего проверять, пусть хоть "25671", хоть Евкакий
     bot.send_message(message.chat.id, "Отличное имя, запомню! Теперь укажи, пожалуйста, свой возраст.")
     dbworker.set_curr_state(message.chat.id, config.States.S_ENTER_AGE.value)
+
     
 @bot.message_handler(func=lambda message: dbworker.get_curr_state(message.chat.id) == config.States.S_ENTER_AGE.value)
 def user_entering_age(message):
