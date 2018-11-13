@@ -18,3 +18,4 @@ class States(Enum):
     S_ENTER_NAME = "1"
     S_ENTER_AGE = "2"
     S_ENTER_PIC = "3"
+    S_MSG_ECHO = "4"

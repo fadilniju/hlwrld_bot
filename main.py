@@ -47,6 +47,9 @@ def send_welcome(message):
         bot.send_message(message.chat.id, "Кажется, кто-то обещал отправить свой возраст, но так и не сделал этого :( Жду...")
     elif state == config.States.S_ENTER_PIC.value:
         bot.send_message(message.chat.id, "Кажется, кто-то обещал отправить своё фото, но так и не сделал этого :( Жду...")
+    elif state == config.States.S_MSG_ECHO.value:
+        bot.send_message(message.chat.id, "Ты нажал старт, но делаешь это без должного уважения... Как тебя зовут?")
+        dbworker.set_curr_state(message.chat.id, config.States.S_ENTER_NAME.value)
     else:
         bot.reply_to(message,
             ("Привет, я EchoBot.\n"
@@ -89,16 +92,16 @@ def user_entering_age(message):
 def user_sending_photo(message):
     # То, что это фотография, мы уже проверили в хэндлере, никаких дополнительных действий не нужно.
     bot.send_message(message.chat.id, "Отлично! Больше от тебя ничего не требуется. Если захочешь пообщаться снова - "
-                     "отправь команду /start.")
-    dbworker.set_curr_state(message.chat.id, config.States.S_START.value)
+                     "отправь команду /start")
+    dbworker.set_curr_state(message.chat.id, config.States.S_MSG_ECHO.value)
     
 
-"""
+
 # Обрабатываем все остальные сообщения (????)
-@bot.message_handler(func=lambda message: True, content_types=['text'])
+@bot.message_handler(func=lambda message: dbworker.get_curr_state(message.chat.id) == config.States.S_MSG_ECHO.value, content_types=['text'])
 def echo_message(message):
     bot.reply_to(message, message.text)
-"""
+
 
 # Remove webhook, it fails sometimes the set if there is a previous webhook
 bot.remove_webhook()
