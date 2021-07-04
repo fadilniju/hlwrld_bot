@@ -1,6 +1,6 @@
 import os
 
-TOKEN = os.environ.get('BOT_TOKEN')
+TOKEN = os.environ.get('1854010658:AAG7mV47VuzxCu0QS7d_JOgsIOF7I_qja1o')
 
 WEBHOOK_HOST = "hlwrld-bot.herokuapp.com"
 WEBHOOK_PORT = int(os.environ.get('PORT', '80'))
