@@ -41,7 +41,7 @@ app.router.add_post('/{token}/', handle)
 def send_welcome(message):
     bot.reply_to(message,
                  ("Hi there, I am EchoBot.\n"
-                  "I am here to echo your kind words back to you."))
+                  "I am here to echo your kind words back to you Made by @Fadilp."))
 
 
 # Обрабатываем все остальные сообщения
